@@ -31,6 +31,7 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             currentSlot.ClearBlock();
             currentSlot = null;
+            transform.SetParent(canvas.transform);
         }
 
         canvasGroup.blocksRaycasts = false;
@@ -58,10 +59,11 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             rectTransform.position = nearestSlot.transform.position;
             nearestSlot.PlaceBlock(this);
             currentSlot = nearestSlot;
+            transform.SetParent(nearestSlot.transform);
         }
         else
         {
-            // No slot nearby � delete
+            // No slot nearby delete
             Destroy(gameObject);
         }
     }

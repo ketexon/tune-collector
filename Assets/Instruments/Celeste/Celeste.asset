@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83709e919d396114a87b54404e11296a, type: 3}
+  m_Name: Celeste
+  m_EditorClassIdentifier: Assembly-CSharp::Instrument
+  PitchSamples:
+  - Pitch: 1
+    Sample: {fileID: 8300000, guid: b3a1027004525a54a9f674e9720e8b1b, type: 3}
+  - Pitch: 2
+    Sample: {fileID: 8300000, guid: 35b9c275499416145b07815a387c638c, type: 3}
+  - Pitch: 3
+    Sample: {fileID: 8300000, guid: 13e1ba417ad748b4ca64550ac160a383, type: 3}
+  - Pitch: 4
+    Sample: {fileID: 8300000, guid: 36af98d121c937b428c2c963c6a36726, type: 3}
+  - Pitch: 5
+    Sample: {fileID: 8300000, guid: 3c726ba2808cb1e47916bcc0fdd30f4c, type: 3}
+  - Pitch: 6
+    Sample: {fileID: 8300000, guid: bd3c662347104c24bb5e41049ec21287, type: 3}
+  - Pitch: 7
+    Sample: {fileID: 8300000, guid: 201fb05083983794aa97e98dac6a9586, type: 3}
+  - Pitch: 8
+    Sample: {fileID: 8300000, guid: 8faa101ad2ead2b4dbccb7ac6eceeb04, type: 3}
+  - Pitch: 9
+    Sample: {fileID: 8300000, guid: 255ca8c15abb48e489a57d78abc22070, type: 3}
+  - Pitch: 10
+    Sample: {fileID: 8300000, guid: 14131a0f7b7c7fb409373f5fc3c1df9a, type: 3}
+  - Pitch: 11
+    Sample: {fileID: 8300000, guid: dea13ca882bb9ca46bab636676706b29, type: 3}
+  - Pitch: 12
+    Sample: {fileID: 8300000, guid: 59ef1d86ba4b16d4693fc0ac3d43d7a5, type: 3}
+  - Pitch: 13
+    Sample: {fileID: 8300000, guid: 448715240520a8846a788c1d899fc6b2, type: 3}
+  - Pitch: 14
+    Sample: {fileID: 8300000, guid: 395a4a7b76856044c8e9ba6fc555f93d, type: 3}
+  - Pitch: 15
+    Sample: {fileID: 8300000, guid: 2f89b901ccca7fd4bacded00b25c770c, type: 3}
+  - Pitch: 16
+    Sample: {fileID: 8300000, guid: 0d1a7b9f6de5ae549939e28d93f5a6a7, type: 3}
+  - Pitch: 17
+    Sample: {fileID: 8300000, guid: c335ff3aeff362f4abd10351609abf9c, type: 3}
+  - Pitch: 18
+    Sample: {fileID: 8300000, guid: 4acd64aa81be1af4984d3fb15da4d781, type: 3}
+  - Pitch: 19
+    Sample: {fileID: 8300000, guid: a8b36d23ad668f146889599de30c9212, type: 3}
+  - Pitch: 20
+    Sample: {fileID: 8300000, guid: f00b81c17beb371428c923038f8fabe0, type: 3}
+  - Pitch: 21
+    Sample: {fileID: 8300000, guid: af50321bd5188444e8cee6db0b80ad92, type: 3}
+  - Pitch: 22
+    Sample: {fileID: 8300000, guid: 19fc5132089a6a94389cdceb86df0535, type: 3}
+  - Pitch: 23
+    Sample: {fileID: 8300000, guid: 41c792b712a1a504fa5be40808c655d9, type: 3}
+  - Pitch: 24
+    Sample: {fileID: 8300000, guid: af8ce6a5421e73844a320e0411d2c7ab, type: 3}
+  - Pitch: 25
+    Sample: {fileID: 8300000, guid: 69cdd3c7af248834a97abef6fc356824, type: 3}

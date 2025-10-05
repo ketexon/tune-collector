@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
+    Transform startParent;
+
     const float BlockLerpSpeed = 2f;
 
     public bool IsOccupied => CurrentBlock != null;
@@ -28,12 +30,4 @@ public class Slot : MonoBehaviour
 
     private void Start() => BlockChainManager.Instance.RegisterSlot(this);
     private void OnDestroy() => BlockChainManager.Instance.UnregisterSlot(this);
-
-	void Update()
-	{
-		if (CurrentBlock != null && !CurrentBlock.IsDragging)
-        {
-            CurrentBlock.transform.position = transform.position;
-        }
-	}
 }

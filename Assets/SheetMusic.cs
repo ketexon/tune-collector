@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +23,6 @@ public class SheetMusic : MonoBehaviour
 
     public class NoteOffset
     {
-        public Measure Measure;
         public MeasureNote Note;
         public float Offset;
     }
@@ -32,15 +32,22 @@ public class SheetMusic : MonoBehaviour
 
     int nextNodeIndex = -1;
     bool transitionedToStart = false;
+    float lastMeasureEnd = 0f;
 
-    public void Play()
+    void Start()
+    {
+        EventBus.PlayEvent.AddListener(OnPlay);
+    }
+
+    public void OnPlay()
     {
         CurMeasure = -1f;
         IsPlaying = true;
         ComputeStride();
         ComputeNoteTimes();
-
-        EventBus.PlayEvent.Invoke();
+        StartCoroutine(MoveMusic(
+            -CurMeasure * stride + RectTransform.rect.width / 2f
+        ));
     }
 
     // note: don't do until layout is done (after first update)
@@ -72,7 +79,6 @@ public class SheetMusic : MonoBehaviour
             {
                 var noteTime = new NoteOffset
                 {
-                    Measure = measure,
                     Note = note,
                     Offset = measureOffset + note.OffsetPercent
                 };
@@ -80,6 +86,7 @@ public class SheetMusic : MonoBehaviour
             }
 
             measureOffset += 1f;
+            lastMeasureEnd = measureOffset;
         }
         nextNodeIndex = NoteOffsets.Count > 0 ? 0 : -1;
     }
@@ -92,31 +99,69 @@ public class SheetMusic : MonoBehaviour
         }
     }
 
+
+    IEnumerator MoveMusic(float targetX)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + 0.25f;
+
+        var startPosition = measureSlotContainer.anchoredPosition;
+        var targetPosition = new Vector2(
+            targetX,
+            measureSlotContainer.anchoredPosition.y
+        );
+
+        while (Time.time < endTime)
+        {
+            float t = (Time.time - startTime) / (endTime - startTime);
+            t = Mathf.SmoothStep(0f, 1f, t);
+
+            measureSlotContainer.anchoredPosition = Vector2.Lerp(
+                startPosition,
+                targetPosition,
+                t
+            );
+            yield return null;
+        }
+        measureSlotContainer.anchoredPosition = targetPosition;
+        transitionedToStart = true;
+    }
+
     void UpdatePlayback()
     {
+        // lerp to start position
+        if (!transitionedToStart)
+        {
+            return;
+        }
+
         var targetPosition = new Vector2(
             -CurMeasure * stride + RectTransform.rect.width / 2f,
             measureSlotContainer.anchoredPosition.y
         );
 
-        // lerp to start position
-        if (!transitionedToStart)
-        {
-            measureSlotContainer.anchoredPosition = Vector2.Lerp(
-                measureSlotContainer.anchoredPosition,
-                targetPosition,
-                Time.deltaTime * 20f
-            );
-            var dist = Vector2.Distance(measureSlotContainer.anchoredPosition, targetPosition);
-            if (Mathf.Abs(dist) < 0.01f)
-            {
-                transitionedToStart = true;
-                measureSlotContainer.anchoredPosition = targetPosition;
-            }
-            return;
-        }
-
         CurMeasure += Time.deltaTime * BPS / 4f;
         measureSlotContainer.anchoredPosition = targetPosition;
+
+        if (CurMeasure >= lastMeasureEnd)
+        {
+            IsPlaying = false;
+            transitionedToStart = false;
+            EventBus.SongEndedEvent.Invoke();
+            ClearSlots();
+        }
+    }
+
+    void ClearSlots()
+    {
+        foreach (Transform measureSlotTransform in measureSlotContainer)
+        {
+            var slot = measureSlotTransform.GetComponent<Slot>();
+            if (slot.CurrentBlock != null)
+            {
+                Destroy(slot.CurrentBlock.gameObject);
+                slot.ClearBlock();
+            }
+        }
     }
 }

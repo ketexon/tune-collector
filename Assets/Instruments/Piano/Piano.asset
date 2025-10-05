@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83709e919d396114a87b54404e11296a, type: 3}
+  m_Name: Piano
+  m_EditorClassIdentifier: Assembly-CSharp::Instrument
+  PitchSamples:
+  - Pitch: 3
+    Sample: {fileID: 8300000, guid: 3a58612a66bcfed4088d2e9bb3be7095, type: 3}
+  - Pitch: 5
+    Sample: {fileID: 8300000, guid: dc7fffe2db7153645832b698dae9f65f, type: 3}
+  - Pitch: 6
+    Sample: {fileID: 8300000, guid: c6d42cd41fec4ac4b909152da2851ced, type: 3}
+  - Pitch: 1
+    Sample: {fileID: 8300000, guid: 653af311eaa9046468b64fb3a1d54a35, type: 3}

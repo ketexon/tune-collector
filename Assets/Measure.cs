@@ -1,27 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-
-[CustomEditor(typeof(Measure))]
-public class MeasureEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        Measure measure = (Measure)target;
-        if (GUILayout.Button("Preview Notes"))
-        {
-            measure.GenerateNotes();
-            EditorUtility.SetDirty(measure);
-        }
-    }
-}
-
-#endif
-
 [RequireComponent(typeof(RectTransform))]
 public class Measure : MonoBehaviour
 {

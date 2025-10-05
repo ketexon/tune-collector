@@ -355,6 +355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e2bfba412ab664aa5778d1f57f1e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeasureNote
+  NoteValue:
+    Duration: 1
+    Division: 4
+    Pitch: 0
 --- !u!1 &363669194
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +492,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e2bfba412ab664aa5778d1f57f1e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeasureNote
+  NoteValue:
+    Duration: 1
+    Division: 4
+    Pitch: 0
 --- !u!1 &442873076
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +585,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Slot
   nextSlot: {fileID: 0}
+--- !u!1 &475643568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475643570}
+  - component: {fileID: 475643569}
+  m_Layer: 0
+  m_Name: PlayerRhythm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &475643569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475643568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f70a73b889aad43aa90c3f242a1c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRhythm
+  tapAction: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  sheetMusic: {fileID: 1151156958}
+  hitWindow: 0.033333335
+  tooEarlyWindow: 0.1
+--- !u!4 &475643570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475643568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 226.3495, y: 192.2891, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &677850855
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +691,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 4
+  m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -770,7 +826,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockSpawner
   blockPrefab: {fileID: 1750069810907490976, guid: b19ca61681b8da544ad50f626269348e, type: 3}
-  canvas: {fileID: 1322752139}
 --- !u!114 &916369852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,8 +1042,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 784710123}
   - {fileID: 677850856}
+  - {fileID: 784710123}
   m_Father: {fileID: 1322752140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1009,7 +1064,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SheetMusic
   BPM: 120
-  Patterns: []
   measureSlotContainer: {fileID: 677850856}
 --- !u!1 &1229406787
 GameObject:
@@ -1355,6 +1409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e2bfba412ab664aa5778d1f57f1e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeasureNote
+  NoteValue:
+    Duration: 1
+    Division: 4
+    Pitch: 0
 --- !u!1 &1515365159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,68 +1789,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699913248}
   m_CullTransparentMesh: 1
---- !u!1 &1899159181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1899159183}
-  - component: {fileID: 1899159182}
-  m_Layer: 0
-  m_Name: PlayerInput
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1899159182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899159181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!4 &1899159183
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899159181}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 833.96155, y: 449.92145, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1960041506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,10 +2136,6 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 872448157582216980, guid: b19ca61681b8da544ad50f626269348e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 872448157582216980, guid: b19ca61681b8da544ad50f626269348e, type: 3}
       propertyPath: m_SizeDelta.y
       value: 80
       objectReference: {fileID: 0}
@@ -2244,4 +2236,4 @@ SceneRoots:
   - {fileID: 1143262449}
   - {fileID: 1322752140}
   - {fileID: 1640090592}
-  - {fileID: 1899159183}
+  - {fileID: 475643570}

@@ -1,8 +1,11 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public bool IsDragging { get; private set; } = false;
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Canvas canvas;
@@ -21,6 +24,8 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        IsDragging = true;
+
         // Allow re-dragging: if we were in a slot, free it first
         if (currentSlot != null)
         {
@@ -42,6 +47,8 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        IsDragging = false;
+
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
 
@@ -54,7 +61,7 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
         else
         {
-            // No slot nearby — delete
+            // No slot nearby ï¿½ delete
             Destroy(gameObject);
         }
     }

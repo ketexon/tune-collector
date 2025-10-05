@@ -11,7 +11,8 @@ public class Measure : MonoBehaviour
     [SerializeField]
     private Transform noteContainer;
 
-    private List<MeasureNote> measureNotes = new();
+    [System.NonSerialized]
+    public List<MeasureNote> MeasureNotes = new();
 
     void Start()
     {
@@ -35,7 +36,7 @@ public class Measure : MonoBehaviour
                 .gameObject
             );
         }
-        measureNotes.Clear();
+        MeasureNotes.Clear();
 
         var rectTransform = transform as RectTransform;
         float currentOffsetPercent = 0f;
@@ -45,6 +46,7 @@ public class Measure : MonoBehaviour
             Debug.Log(noteValue);
 
             var note = Instantiate(notePrefab, noteContainer);
+            note.NoteValue = noteValue;
             note.name = $"Note {currentOffsetPercent:F2}";
 
             float startPos = currentOffsetPercent * rectTransform.rect.width;
@@ -59,7 +61,7 @@ public class Measure : MonoBehaviour
                 noteRect.sizeDelta.y
             );
 
-            measureNotes.Add(note);
+            MeasureNotes.Add(note);
             currentOffsetPercent += noteValue.DurationMeasures;
         }
     }

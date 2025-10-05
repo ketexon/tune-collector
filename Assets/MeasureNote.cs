@@ -5,6 +5,7 @@ public class MeasureNote : MonoBehaviour
 {
 	public NoteValue NoteValue;
 	public Measure Measure;
+	public float OffsetPercent;
 
 	public void Play()
 	{

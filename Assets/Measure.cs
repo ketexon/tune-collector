@@ -43,11 +43,17 @@ public class Measure : MonoBehaviour
         Debug.Log($"HI {Pattern.Notes.Count}");
         foreach (var noteValue in Pattern.Notes)
         {
+            if (noteValue.Pitch == PitchValue.Rest)
+            {
+                currentOffsetPercent += noteValue.DurationMeasures;
+                continue;
+            }
             Debug.Log(noteValue);
 
             var note = Instantiate(notePrefab, noteContainer);
             note.NoteValue = noteValue;
             note.Measure = this;
+            note.OffsetPercent = currentOffsetPercent;
             note.name = $"Note {currentOffsetPercent:F2}";
 
             float startPos = currentOffsetPercent * rectTransform.rect.width;

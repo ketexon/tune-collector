@@ -59,8 +59,6 @@ public class SheetMusic : MonoBehaviour
         float measureOffset = 0f;
         foreach (Transform measureSlotTransform in measureSlotContainer)
         {
-            float currentOffset = measureOffset;
-
             var slot = measureSlotTransform.GetComponent<Slot>();
             if (slot.CurrentBlock == null)
             {
@@ -76,10 +74,9 @@ public class SheetMusic : MonoBehaviour
                 {
                     Measure = measure,
                     Note = note,
-                    Offset = currentOffset
+                    Offset = measureOffset + note.OffsetPercent
                 };
                 NoteOffsets.Add(noteTime);
-                currentOffset += note.NoteValue.DurationMeasures;
             }
 
             measureOffset += 1f;

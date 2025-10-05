@@ -15,13 +15,17 @@ MonoBehaviour:
   Notes:
   - Duration: 1
     Division: 4
-    Pitch: 0
+    Pitch: 1
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
+  - Duration: 1
+    Division: 4
+    Pitch: 1
     Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 4
     Pitch: 0
     Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
-  - Duration: 2
+  - Duration: 1
     Division: 4
-    Pitch: 0
+    Pitch: 1
     Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}

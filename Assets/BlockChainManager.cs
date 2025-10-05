@@ -7,6 +7,7 @@ public class BlockChainManager : MonoBehaviour
     public static BlockChainManager Instance { get; private set; }
 
     private List<Slot> slots = new List<Slot>();
+    [SerializeField] Slot firstSlot;
 
     private void Awake()
     {
@@ -46,5 +47,20 @@ public class BlockChainManager : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    public List<GameObject> ProcessSlots()
+    {
+        Slot cur = firstSlot;
+        List<GameObject> output = new List<GameObject>();
+        while (cur != null)
+        {
+            if (cur.CurrentBlock != null)
+            {
+                output.Add(cur.CurrentBlock.gameObject);
+            }
+            cur = cur.nextSlot;
+        }
+        return output;
     }
 }

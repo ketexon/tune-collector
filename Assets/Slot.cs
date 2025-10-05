@@ -5,6 +5,8 @@ public class Slot : MonoBehaviour
     public bool IsOccupied => CurrentBlock != null;
     public DraggableBlock CurrentBlock { get; private set; }
 
+    [SerializeField] public Slot nextSlot;
+
     public void PlaceBlock(DraggableBlock block)
     {
         // If another block is already here, clear it

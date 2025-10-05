@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4e47b2e0583854f8f3a56b00294da7, type: 3}
+  m_Name: BassMelody1
+  m_EditorClassIdentifier: Assembly-CSharp::Pattern
+  Notes:
+  - Duration: 1
+    Division: 16
+    Pitch: 8
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 13
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 15
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 17
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 13
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 0
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 22
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 0
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 20
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 0
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 18
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 20
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 12
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 0
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 15
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
+  - Duration: 1
+    Division: 16
+    Pitch: 0
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}

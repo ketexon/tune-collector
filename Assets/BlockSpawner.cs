@@ -4,13 +4,18 @@ using UnityEngine.InputSystem;
 
 public class BlockSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private GameObject blockPrefab; // Prefab with DraggableBlock
-    [SerializeField] private Canvas canvas; // Canvas the block will be spawned in
+    [SerializeField] public GameObject blockPrefab; // Prefab with DraggableBlock
+    private Canvas canvas; // Canvas the block will be spawned in
 
 
     bool hovered = false;
 
     private InputAction clickAction;
+
+    private void Start()
+    {
+        canvas = FindAnyObjectByType<Canvas>();
+    }
 
     private void OnEnable()
     {

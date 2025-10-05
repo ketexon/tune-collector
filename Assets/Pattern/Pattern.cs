@@ -16,7 +16,6 @@ public class NoteValue
 {
     const int BeatsPerMeasure = 4;
 
-
     public int Duration = 1;
     public int Division = 4;
     public PitchValue Pitch = PitchValue.Rest;

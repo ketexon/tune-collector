@@ -4,7 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class Measure : MonoBehaviour
 {
+    const float PassPercent = 0.75f;
+
     public Pattern Pattern;
+    public List<TuneTypeDamage> Damage;
 
     [SerializeField] MeasureNote notePrefab;
 
@@ -13,6 +16,11 @@ public class Measure : MonoBehaviour
 
     [System.NonSerialized]
     public List<MeasureNote> MeasureNotes = new();
+
+    int notesHit = 0;
+    int notesMissed = 0;
+
+    float CurPercent => notesHit / (float)MeasureNotes.Count;
 
     void Start()
     {
@@ -72,4 +80,36 @@ public class Measure : MonoBehaviour
             currentOffsetPercent += noteValue.DurationMeasures;
         }
     }
+
+    public void OnNoteHit()
+    {
+        ++notesHit;
+        if (IsComplete)
+        {
+            OnMeasureComplete();
+        }
+    }
+
+    public void OnNoteMissed()
+    {
+        --notesMissed;
+        if (IsComplete)
+        {
+            OnMeasureComplete();
+        }
+    }
+
+    public void OnMeasureComplete()
+    {
+        if (CurPercent >= PassPercent)
+        {
+            EventBus.MeasurePassedEvent.Invoke(this);
+        }
+        else
+        {
+            EventBus.MeasureFailedEvent.Invoke(this);
+        }
+    }
+
+    bool IsComplete => notesHit + notesMissed >= MeasureNotes.Count;
 }

@@ -10,12 +10,14 @@ public class MeasureNote : MonoBehaviour
 	public void Play()
 	{
 		EventBus.NotePlayedEvent.Invoke(this);
+		Measure.OnNoteHit();
 		GetComponentInChildren<Image>().color = Color.green;
 	}
 
 	public void Miss()
 	{
 		EventBus.NoteMissedEvent.Invoke(this);
+		Measure.OnNoteMissed();
 		GetComponentInChildren<Image>().color = Color.red;
 	}
 }

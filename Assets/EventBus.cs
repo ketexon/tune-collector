@@ -9,4 +9,7 @@ public class EventBus : MonoBehaviour
 
     public static UnityEvent<MeasureNote> NotePlayedEvent = new();
     public static UnityEvent<MeasureNote> NoteMissedEvent = new();
+
+    public static UnityEvent<Measure> MeasurePassedEvent = new();
+    public static UnityEvent<Measure> MeasureFailedEvent = new();
 }

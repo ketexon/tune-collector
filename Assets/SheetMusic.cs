@@ -1,10 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public enum GameState {
+    ChoosingTunes,
+    TransitionToPlay,
+    Playing,
+    TransitionToEnd,
+}
 
 [RequireComponent(typeof(RectTransform))]
 public class SheetMusic : MonoBehaviour
 {
+    GameState state = GameState.ChoosingTunes;
+    public GameState State
+    {
+        get => state;
+        private set
+        {
+            if (state == value) return;
+            var old = state;
+            state = value;
+            StateChangedEvent.Invoke(old, state);
+        }
+    }
+
+    public UnityEvent<GameState, GameState> StateChangedEvent = new();
+
+    public bool IsPlaying => state == GameState.Playing;
+
     public float BPM = 120f;
     public float BPS => BPM / 60f;
 
@@ -13,9 +38,6 @@ public class SheetMusic : MonoBehaviour
 
     [System.NonSerialized]
     public float CurMeasure = 0f;
-
-    [System.NonSerialized]
-    public bool IsPlaying = false;
 
     private RectTransform RectTransform => transform as RectTransform;
 
@@ -30,24 +52,33 @@ public class SheetMusic : MonoBehaviour
     [System.NonSerialized]
     public List<NoteOffset> NoteOffsets = new();
 
-    int nextNodeIndex = -1;
-    bool transitionedToStart = false;
     float lastMeasureEnd = 0f;
+    double startDspTime = 0f;
+    float startMeasure = -1;
 
     void Start()
     {
         EventBus.PlayEvent.AddListener(OnPlay);
+        StateChangedEvent.AddListener(OnStateChanged);
     }
 
     public void OnPlay()
     {
-        CurMeasure = -1f;
-        IsPlaying = true;
+        CurMeasure = startMeasure;
+        State = GameState.TransitionToPlay;
         ComputeStride();
         ComputeNoteTimes();
         StartCoroutine(MoveMusic(
             -CurMeasure * stride + RectTransform.rect.width / 2f
         ));
+    }
+
+    void OnStateChanged(GameState from, GameState to)
+    {
+        if (to == GameState.Playing)
+        {
+            startDspTime = AudioSettings.dspTime;
+        }
     }
 
     // note: don't do until layout is done (after first update)
@@ -88,17 +119,15 @@ public class SheetMusic : MonoBehaviour
             measureOffset += 1f;
             lastMeasureEnd = measureOffset;
         }
-        nextNodeIndex = NoteOffsets.Count > 0 ? 0 : -1;
     }
 
     void Update()
     {
-        if (IsPlaying)
+        if (state == GameState.Playing)
         {
             UpdatePlayback();
         }
     }
-
 
     IEnumerator MoveMusic(float targetX)
     {
@@ -124,29 +153,23 @@ public class SheetMusic : MonoBehaviour
             yield return null;
         }
         measureSlotContainer.anchoredPosition = targetPosition;
-        transitionedToStart = true;
+        State = GameState.Playing;
     }
 
     void UpdatePlayback()
     {
-        // lerp to start position
-        if (!transitionedToStart)
-        {
-            return;
-        }
-
         var targetPosition = new Vector2(
             -CurMeasure * stride + RectTransform.rect.width / 2f,
             measureSlotContainer.anchoredPosition.y
         );
 
-        CurMeasure += Time.deltaTime * BPS / 4f;
+        double dspTimeSinceStart = AudioSettings.dspTime - startDspTime;
+        CurMeasure = (float) (dspTimeSinceStart * BPS / 4f) + startMeasure;
         measureSlotContainer.anchoredPosition = targetPosition;
 
         if (CurMeasure >= lastMeasureEnd)
         {
-            IsPlaying = false;
-            transitionedToStart = false;
+            State = GameState.TransitionToEnd;
             EventBus.SongEndedEvent.Invoke();
             ClearSlots();
         }

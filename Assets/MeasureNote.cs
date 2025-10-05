@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class MeasureNote : MonoBehaviour
 {
 	public NoteValue NoteValue;
+	public Measure Measure;
 
 	public void Play()
 	{

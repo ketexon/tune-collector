@@ -47,6 +47,7 @@ public class Measure : MonoBehaviour
 
             var note = Instantiate(notePrefab, noteContainer);
             note.NoteValue = noteValue;
+            note.Measure = this;
             note.name = $"Note {currentOffsetPercent:F2}";
 
             float startPos = currentOffsetPercent * rectTransform.rect.width;

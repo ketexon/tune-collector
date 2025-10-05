@@ -9,8 +9,10 @@ public class NoteValue
     public int Duration = 1;
     public int Division = 4;
     public int Pitch = 0;
+    public Element Element;
 
-    public float DurationMeasures => (float) Duration / Division;
+
+    public float DurationMeasures => (float)Duration / Division;
     public float DurationBeats => BeatsPerMeasure * DurationMeasures;
 }
 

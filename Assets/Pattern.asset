@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4e47b2e0583854f8f3a56b00294da7, type: 3}
   m_Name: Pattern
   m_EditorClassIdentifier: Assembly-CSharp::Pattern
-  notes:
+  Notes:
   - Duration: 1
+    Division: 4
+    Pitch: 0
+  - Duration: 1
+    Division: 4
+    Pitch: 0
+  - Duration: 2
     Division: 4
     Pitch: 0

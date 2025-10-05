@@ -4,11 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class NoteValue
 {
+    const int BeatsPerMeasure = 4;
+
     public int Duration = 1;
     public int Division = 4;
     public int Pitch = 0;
 
-    public float DurationBeats => (float) Duration / Division;
+    public float DurationMeasures => (float) Duration / Division;
+    public float DurationBeats => BeatsPerMeasure * DurationMeasures;
 }
 
 [CreateAssetMenu(fileName = "Pattern", menuName = "Pattern")]

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2331562086130904365}
   - component: {fileID: 3817992759759125675}
   - component: {fileID: 3963211282485134148}
+  - component: {fileID: 1580445836356203081}
   m_Layer: 5
   m_Name: Block
   m_TagString: Untagged
@@ -102,3 +103,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1580445836356203081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750069810907490976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a88ead13b7de45bc2d6d3b6031c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Measure
+  Pattern: {fileID: 11400000, guid: b4466aac7e4df5842b9f88da1f49b24e, type: 2}
+  notePrefab: {fileID: 6822434331148500423, guid: ffc356fc30d10f044a004e1a5d623579, type: 3}
+  noteContainer: {fileID: 872448157582216980}

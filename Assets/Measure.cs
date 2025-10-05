@@ -12,31 +12,33 @@ public class MeasureEditor : Editor
         DrawDefaultInspector();
 
         Measure measure = (Measure)target;
-        if (GUILayout.Button("Generate Notes"))
+        if (GUILayout.Button("Preview Notes"))
         {
+            measure.GenerateNotes();
             EditorUtility.SetDirty(measure);
         }
     }
 }
+
 #endif
 
+[RequireComponent(typeof(RectTransform))]
 public class Measure : MonoBehaviour
 {
     public Pattern Pattern;
-
-    [SerializeField] float width = 4.0f;
 
     [SerializeField] MeasureNote notePrefab;
 
     [SerializeField]
     private Transform noteContainer;
 
-    [HideInInspector]
-    [SerializeField]
-    private List<MeasureNote> measureNotes;
+    private List<MeasureNote> measureNotes = new();
 
-#if UNITY_EDITOR
-    // called in editor only
+    void Start()
+    {
+        GenerateNotes();
+    }
+
     public void GenerateNotes()
     {
         if (Pattern == null || noteContainer == null)
@@ -45,32 +47,41 @@ public class Measure : MonoBehaviour
             return;
         }
 
-        if (Application.isPlaying)
-        {
-            Debug.LogWarning("GenerateNotes should only be called in the editor.");
-            return;
-        }
 
         // Clear existing notes
-        foreach (Transform child in noteContainer)
+        while (noteContainer.childCount > 0)
         {
-            DestroyImmediate(child.gameObject);
+            DestroyImmediate(
+                noteContainer.GetChild(noteContainer.childCount - 1)
+                .gameObject
+            );
         }
         measureNotes.Clear();
 
-        float currentBeat = 0f;
+        var rectTransform = transform as RectTransform;
+        float currentOffsetPercent = 0f;
+        Debug.Log($"HI {Pattern.Notes.Count}");
         foreach (var noteValue in Pattern.Notes)
         {
+            Debug.Log(noteValue);
+
             var note = Instantiate(notePrefab, noteContainer);
-            note.name = $"Note {currentBeat:F2}";
+            note.name = $"Note {currentOffsetPercent:F2}";
 
-            float startPos = (currentBeat / 4f) * width;
-            note.transform.localPosition = new(startPos, 0, 0);
+            float startPos = currentOffsetPercent * rectTransform.rect.width;
+            var noteRect = note.transform as RectTransform;
 
+            noteRect.pivot = new Vector2(0, 0.5f);
+            noteRect.anchoredPosition = new Vector2(startPos, 0);
+            noteRect.anchorMin = new Vector2(0, 0.5f);
+            noteRect.anchorMax = new Vector2(0, 0.5f);
+            noteRect.sizeDelta = new Vector2(
+                noteValue.DurationMeasures * rectTransform.rect.width,
+                noteRect.sizeDelta.y
+            );
 
             measureNotes.Add(note);
-            currentBeat += noteValue.DurationBeats;
+            currentOffsetPercent += noteValue.DurationMeasures;
         }
     }
-#endif
 }

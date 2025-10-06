@@ -150,6 +150,10 @@ public class CustomerManager : MonoBehaviour
                 Debug.Log("ASSIGN REWARD TUNE");
                 customer.rewardTune = rewardTune;
             }
+            else
+            {
+                customer.rewardTune = null;
+            }
             activeCustomers.Add(customer);
             customer.ShowCustomer();
         }

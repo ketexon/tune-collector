@@ -11,6 +11,9 @@ public class DamageAccumulatorEntry : MonoBehaviour
 	GameObject percussionIcon;
 
 	[SerializeField]
+	GameObject particlesPrefab;
+
+	[SerializeField]
 	GameObject bassIcon;
 
 	[SerializeField]
@@ -104,5 +107,14 @@ public class DamageAccumulatorEntry : MonoBehaviour
 		}
 
 		StartCoroutine(Impl());
+	}
+
+	void OnDestroy()
+	{
+		if (particlesPrefab != null)
+		{
+			var go = Instantiate(particlesPrefab, transform.parent);
+			go.transform.position = transform.position;
+		}
 	}
 }

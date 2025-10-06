@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageAccumulatorEntry
   percussionIcon: {fileID: 7711664507447732004, guid: b68f0c753eea43240a4c71bba48782bc, type: 3}
+  particlesPrefab: {fileID: 2001952874366555823, guid: 131e1334b1f02f940a1b1625277fb5ca, type: 3}
   bassIcon: {fileID: 3503857973000000163, guid: f2875dbe79a061f4193f7bc1b6cf0d70, type: 3}
   melodyIcon: {fileID: 255612055494328669, guid: 0c7a36df20f516c4aa458075ca403968, type: 3}
   curve:

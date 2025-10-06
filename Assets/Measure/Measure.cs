@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class Measure : MonoBehaviour
 {
-    const float PassPercent = 0.1f;
+    const float PassPercent = 0.75f;
     public string TuneName;
     public Pattern Pattern;
     public List<TuneTypeDamage> Damage;

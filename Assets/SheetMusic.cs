@@ -61,6 +61,22 @@ public class SheetMusic : MonoBehaviour
     double startDspTime = 0f;
     float startMeasure = -1;
 
+    public bool CanPlay
+    {
+        get
+        {
+            foreach (Transform measureSlotTransform in measureSlotContainer)
+            {
+                var slot = measureSlotTransform.GetComponent<Slot>();
+                if (slot.CurrentBlock != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
     void Start()
     {
         EventBus.PlayEvent.AddListener(OnPlay);

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1154f5f96a10043878a0826d7482226f
+guid: 282245fcf3c94fb40aa3964becdd7588
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6085089990648527731
-    second: tune_box_0
+      213: -6684430161380966744
+    second: Rectangle 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tune_box_0
+      name: Rectangle 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 536
-        height: 811
+        height: 754
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 12, y: 12, z: 12, w: 12}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d840c19c4ea6d8ba0800000000000000
-      internalID: -6085089990648527731
+      spriteID: 8aefaf01f222c33a0800000000000000
+      internalID: -6684430161380966744
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9939469886498c448b9595f8e4352d6e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tune_box_0: -6085089990648527731
+      Rectangle 1_0: -6684430161380966744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1154f5f96a10043878a0826d7482226f
+guid: 826d4b7bc1563f24c8ae65d9a73b3b0f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6085089990648527731
-    second: tune_box_0
+      213: -6192548890718783482
+    second: music player_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tune_box_0
+      name: music player_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 536
-        height: 811
+        height: 754
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 12, y: 12, z: 12, w: 12}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d840c19c4ea6d8ba0800000000000000
-      internalID: -6085089990648527731
+      spriteID: 608b77ae795af0aa0800000000000000
+      internalID: -6192548890718783482
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9939469886498c448b9595f8e4352d6e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tune_box_0: -6085089990648527731
+      music player_0: -6192548890718783482
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1477,7 +1477,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 829734763}
   text: {fileID: 661759616}
   fadeDuration: 0.2
-  notificaitonHoldDuration: 2
+  notificaitonHoldDuration: 3
 --- !u!225 &829734763
 CanvasGroup:
   m_ObjectHideFlags: 0

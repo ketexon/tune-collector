@@ -51,3 +51,5 @@ MonoBehaviour:
   entryPrefab: {fileID: -744615994801647345, guid: 5da8a800541554e4abc173698b0ff43d, type: 3}
   spacing: 24
   damageInterval: 0.4
+  dealDamageInterval: 0.4
+  damageTarget: {fileID: 0}

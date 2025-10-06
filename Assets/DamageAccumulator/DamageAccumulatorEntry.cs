@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
@@ -18,10 +19,12 @@ public class DamageAccumulatorEntry : MonoBehaviour
 	[SerializeField]
 	float swayMagnitude = 5f;
 
+	public UnityEvent ReachedTargetEvent = new();
+
 	[System.NonSerialized]
 	public TuneType Type;
 
-	bool lerp = false;
+	bool lerp = true;
 
 	Vector2 sway = Vector2.zero;
 
@@ -62,6 +65,7 @@ public class DamageAccumulatorEntry : MonoBehaviour
 
 	public void MoveToTarget()
 	{
+		lerp = false;
 		IEnumerator Impl()
 		{
 			float startTime = Time.time;
@@ -76,6 +80,7 @@ public class DamageAccumulatorEntry : MonoBehaviour
 				transform.position = Vector2.LerpUnclamped(startPosition, ActualTargetPosition, t);
 				yield return null;
 			}
+			ReachedTargetEvent.Invoke();
 			transform.position = ActualTargetPosition;
 			lerp = true;
 		}

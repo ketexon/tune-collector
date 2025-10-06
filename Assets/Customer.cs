@@ -29,22 +29,23 @@ public class Customer : MonoBehaviour
         ShowRequirements();
     }
 
+    // To be called by an event 
     void ResolveGamePhase()
     {
         // If requirements remain, leave unhappy
         if (requirements.Count > 0)
         {
-
+            // Change sprite to unhappy sprite, fade the character to black and lower the opacity until they vanish
         }
         // If no requirements remain and has reward tune, stay and hum the tune, rewarding it to the player
         else if (rewardTune != null)
         {
-
+            // Change sprite to singing sprite, wait a number of seconds, change to happy sprite and fade the character out
         }
         // If no more requirements remain and no reward tune, leave happily
         else
         {
-
+            // Change sprite to happy sprite, fade the character out
         }
     }
 
@@ -96,5 +97,12 @@ public class Customer : MonoBehaviour
         }
         // Show requirements
         ShowRequirements();
+    }
+
+    // Call this to destroy the current object 
+    void DestroyAndAlertSpawner()
+    {
+        CustomerManager.Instance.DeactivateCustomer(this);
+        Destroy(gameObject);
     }
 }

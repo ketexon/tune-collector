@@ -27,6 +27,8 @@ public class CustomerManager : MonoBehaviour
      * 70-100: All three, 3 customers, max 4 requirement
      */
 
+    public static CustomerManager Instance;
+
     [Header("Tunes")]
     [SerializeField] List<GameObject> tuneList;
 
@@ -43,9 +45,12 @@ public class CustomerManager : MonoBehaviour
 
     private Transform[] anchors;
 
+    HashSet<Customer> activeCustomers = new HashSet<Customer>();
+
     private void Awake()
     {
         anchors = new Transform[] { customer1Anchor, customer2Anchor, customer3Anchor };
+        Instance = this;
     }
 
     private void Start()
@@ -160,8 +165,18 @@ public class CustomerManager : MonoBehaviour
                 {
                     customer.rewardTune = rewardTune;
                 }
+                activeCustomers.Add(customer);
                 customer.ShowCustomer();
             }
+        }
+    }
+
+    public void DeactivateCustomer(Customer cust)
+    {
+        activeCustomers.Remove(cust);
+        if (activeCustomers.Count == 0)
+        {
+            SpawnCustomersByDifficulty();
         }
     }
 

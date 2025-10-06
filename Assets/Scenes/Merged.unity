@@ -908,6 +908,10 @@ PrefabInstance:
       value: CustomerSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
+      propertyPath: difficulty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
       propertyPath: tuneList.Array.size
       value: 13
       objectReference: {fileID: 0}

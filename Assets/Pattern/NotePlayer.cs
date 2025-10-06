@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class NotePlayer : MonoBehaviour
 {
@@ -28,9 +29,24 @@ public class NotePlayer : MonoBehaviour
         }
 
         var audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = sample;
-        audioSource.Play();
+        StartCoroutine(PlayNote(audioSource, sample, noteLengthSeconds + legatoDuration));
+    }
 
-        Destroy(audioSource, noteLengthSeconds + legatoDuration);
+    IEnumerator PlayNote(AudioSource audio, AudioClip clip, float duration)
+    {
+        audio.clip = clip;
+        audio.Play();
+        float timeElapsed = 0;
+        float origVolume = audio.volume;
+
+        while (timeElapsed < duration)
+        {
+            float t = timeElapsed / duration;
+            audio.volume = Mathf.Lerp(origVolume, 0, t);
+            yield return null;
+            timeElapsed += Time.deltaTime;
+        }
+
+        Destroy(audio);
     }
 }

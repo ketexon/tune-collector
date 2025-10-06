@@ -36,6 +36,10 @@ public class SheetMusic : MonoBehaviour
     [SerializeField]
     private RectTransform measureSlotContainer;
 
+    [SerializeField]
+    AudioSource bgm;
+    [SerializeField] float bgmOffset = 0.2f;
+
     [System.NonSerialized]
     public float CurMeasure = 0f;
 
@@ -152,6 +156,8 @@ public class SheetMusic : MonoBehaviour
             );
             yield return null;
         }
+        ToggleBGM();
+        yield return new WaitForSeconds(bgmOffset);
         measureSlotContainer.anchoredPosition = targetPosition;
         State = GameState.Playing;
     }
@@ -172,6 +178,17 @@ public class SheetMusic : MonoBehaviour
             State = GameState.TransitionToEnd;
             EventBus.SongEndedEvent.Invoke();
             ClearSlots();
+        }
+    }
+
+    void ToggleBGM(bool turningOff = false)
+    {
+        if (turningOff)
+        {
+            bgm.Stop();
+        } else
+        {
+            bgm.Play();
         }
     }
 

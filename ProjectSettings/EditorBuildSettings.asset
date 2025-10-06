@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Merged.unity
     guid: 1e7ffc1f84d7ffb478683652271405b2
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 841f70a71fca9514cbac6520c9d95b6b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

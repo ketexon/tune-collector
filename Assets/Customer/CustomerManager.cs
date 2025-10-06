@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum TuneType
 {
@@ -60,7 +61,17 @@ public class CustomerManager : MonoBehaviour
     public void AdjustDifficulty(bool success)
     {
         difficulty += success ? 5 : -2;
-        difficulty = Mathf.Clamp(difficulty, 0, 100);
+        difficulty = Mathf.Max(difficulty, 0);
+
+        if (difficulty >= 100)
+        {
+            var asyncOp = SceneManager.LoadSceneAsync("Win");
+            asyncOp.allowSceneActivation = false;
+            this.Delay(2.0f, () =>
+            {
+                asyncOp.allowSceneActivation = true;
+            });
+        }
     }
 
     /// <summary>

@@ -27,6 +27,9 @@ public class CustomerManager : MonoBehaviour
      * 70-100: All three, 3 customers, max 4 requirement
      */
 
+    [Header("Tunes")]
+    [SerializeField] List<GameObject> tuneList;
+
 
     [Header("Customer Settings")]
     [SerializeField] private GameObject customerPrefab;
@@ -129,6 +132,14 @@ public class CustomerManager : MonoBehaviour
         if (includeMelody)
             availableTypes.Add(TuneType.Melody);
 
+        // Fetch a random reward tune and customer to hold the reward
+        GameObject rewardTune = null;
+        if (tuneList.Count > 0)
+        {
+            rewardTune = tuneList[Random.Range(0, tuneList.Count)];
+        }
+        int rewardIndex = Random.Range(0, numCustomers);
+
         // Spawn
         for (int i = 0; i < numCustomers && i < anchors.Length; i++)
         {
@@ -145,8 +156,17 @@ public class CustomerManager : MonoBehaviour
                     TuneType randomType = availableTypes[Random.Range(0, availableTypes.Count)];
                     customer.requirements.Add(randomType);
                 }
+                if (i == rewardIndex && rewardTune != null)
+                {
+                    customer.rewardTune = rewardTune;
+                }
                 customer.ShowCustomer();
             }
         }
+    }
+
+    public void RemoveTune(GameObject tunePrefab)
+    {
+        tuneList.Remove(tunePrefab);
     }
 }

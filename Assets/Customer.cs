@@ -7,7 +7,7 @@ public class Customer : MonoBehaviour
 {
     public List<TuneType> requirements = new List<TuneType>();
 
-    [SerializeField] public Measure rewardTune;
+    public GameObject rewardTune;
 
     [SerializeField] Transform requirementUI;
     [SerializeField] Image sprite;
@@ -17,6 +17,36 @@ public class Customer : MonoBehaviour
     [SerializeField] GameObject percussionIcon;
 
     float transitionTime = 1f;
+
+    private void Start()
+    {
+        EventBus.DamageEvent.AddListener(ProcessTuneDamage);
+    }
+
+    void ProcessTuneDamage(TuneType tune)
+    {
+        requirements.Remove(tune);
+        ShowRequirements();
+    }
+
+    void ResolveGamePhase()
+    {
+        // If requirements remain, leave unhappy
+        if (requirements.Count > 0)
+        {
+
+        }
+        // If no requirements remain and has reward tune, stay and hum the tune, rewarding it to the player
+        else if (rewardTune != null)
+        {
+
+        }
+        // If no more requirements remain and no reward tune, leave happily
+        else
+        {
+
+        }
+    }
 
     void ShowRequirements()
     {

@@ -10,6 +10,13 @@ public class PlayButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(OnPressed);
+
+        EventBus.CustomersSpawnedEvent.AddListener(OnCustomersSpawned);
+    }
+
+    void OnCustomersSpawned()
+    {
+        button.interactable = true;
     }
 
     void OnPressed()

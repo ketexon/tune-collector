@@ -133,7 +133,7 @@ public class CustomerManager : MonoBehaviour
         }
 
         // Determine possible tune types
-        List<TuneType> availableTypes = new List<TuneType> { TuneType.Percussion, TuneType.Bass };
+        var availableTypes = new List<TuneType> { TuneType.Percussion, TuneType.Bass };
         if (includeMelody)
             availableTypes.Add(TuneType.Melody);
 
@@ -163,12 +163,15 @@ public class CustomerManager : MonoBehaviour
                 }
                 if (i == rewardIndex && rewardTune != null)
                 {
+                    Debug.Log("ASSIGN REWARD TUNE");
                     customer.rewardTune = rewardTune;
                 }
                 activeCustomers.Add(customer);
                 customer.ShowCustomer();
             }
         }
+
+        EventBus.CustomersSpawnedEvent.Invoke();
     }
 
     public void DeactivateCustomer(Customer cust)

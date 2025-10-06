@@ -78,6 +78,7 @@ public class DamageAccumulator : MonoBehaviour
     {
         IEnumerator Impl()
         {
+            int entriesToReachTarget = 0;
             while (entries.Count > 0 || entriesInQueue > 0)
             {
                 if (entries.Count == 0)
@@ -93,15 +94,18 @@ public class DamageAccumulator : MonoBehaviour
                 entry.TargetPosition = damageTarget.position;
                 entry.MoveToTarget();
 
+                entriesToReachTarget++;
                 entry.ReachedTargetEvent.AddListener(() =>
                 {
                     EventBus.DamageEvent.Invoke(entry.Type);
+                    entriesToReachTarget--;
                     Destroy(entry.gameObject);
                 });
 
                 yield return new WaitForSeconds(dealDamageInterval);
             }
-            entries.Clear();
+            while (entriesToReachTarget > 0)
+                yield return null;
             EventBus.DamageFinishedEvent.Invoke();
         }
         StartCoroutine(Impl());

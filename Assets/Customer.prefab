@@ -232,3 +232,7 @@ MonoBehaviour:
   melodyIcon: {fileID: 255612055494328669, guid: 0c7a36df20f516c4aa458075ca403968, type: 3}
   bassIcon: {fileID: 3503857973000000163, guid: f2875dbe79a061f4193f7bc1b6cf0d70, type: 3}
   percussionIcon: {fileID: 7711664507447732004, guid: b68f0c753eea43240a4c71bba48782bc, type: 3}
+  happySprite: {fileID: 0}
+  unhappySprite: {fileID: 0}
+  singingSprite: {fileID: 0}
+  singingInstrument: {fileID: 11400000, guid: 87c80bf8ae510e542b15032101c82e1e, type: 2}

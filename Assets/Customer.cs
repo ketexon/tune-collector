@@ -36,6 +36,7 @@ public class Customer : MonoBehaviour
     void ProcessTuneDamage(TuneType tune)
     {
         requirements.Remove(tune);
+        Debug.Log($"Damaing customer {requirements.Count}");
         ShowRequirements();
     }
 
@@ -43,6 +44,8 @@ public class Customer : MonoBehaviour
     void ResolveGamePhase()
     {
         StopAllCoroutines(); // Stop any ongoing transition
+
+        Debug.Log($"Resolving customer {requirements.Count} {rewardTune}");
 
         // If requirements remain, leave unhappy
         if (requirements.Count > 0)

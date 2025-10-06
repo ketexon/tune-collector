@@ -7,7 +7,8 @@ public enum GameState {
     ChoosingTunes,
     TransitionToPlay,
     Playing,
-    TransitionToEnd,
+    Ended,
+    TransitionToChoosing,
 }
 
 [RequireComponent(typeof(RectTransform))]
@@ -63,7 +64,17 @@ public class SheetMusic : MonoBehaviour
     void Start()
     {
         EventBus.PlayEvent.AddListener(OnPlay);
+        EventBus.CustomersSpawnedEvent.AddListener(OnCustomersSpawned);
         StateChangedEvent.AddListener(OnStateChanged);
+    }
+
+    void OnCustomersSpawned()
+    {
+        ClearSlots();
+        if (State != GameState.ChoosingTunes)
+        {
+            State = GameState.TransitionToChoosing;
+        }
     }
 
     public void OnPlay()
@@ -73,7 +84,12 @@ public class SheetMusic : MonoBehaviour
         ComputeStride();
         ComputeNoteTimes();
         StartCoroutine(MoveMusic(
-            -CurMeasure * stride + RectTransform.rect.width / 2f
+            -CurMeasure * stride + RectTransform.rect.width / 2f,
+            () =>
+            {
+                ToggleBGM(false);
+                State = GameState.Playing;
+            }
         ));
     }
 
@@ -82,6 +98,14 @@ public class SheetMusic : MonoBehaviour
         if (to == GameState.Playing)
         {
             startDspTime = AudioSettings.dspTime;
+        }
+        if (to == GameState.TransitionToChoosing)
+        {
+            ClearSlots();
+            StartCoroutine(MoveMusic(0f, () =>
+            {
+                State = GameState.ChoosingTunes;
+            }));
         }
     }
 
@@ -133,7 +157,7 @@ public class SheetMusic : MonoBehaviour
         }
     }
 
-    IEnumerator MoveMusic(float targetX)
+    IEnumerator MoveMusic(float targetX, System.Action then = null)
     {
         float startTime = Time.time;
         float endTime = startTime + 0.25f;
@@ -156,11 +180,9 @@ public class SheetMusic : MonoBehaviour
             );
             yield return null;
         }
-        ToggleBGM();
-        yield return new WaitForSeconds(bgmOffset);
         measureSlotContainer.anchoredPosition = targetPosition;
-        State = GameState.Playing;
-    }
+		then?.Invoke();
+	}
 
     void UpdatePlayback()
     {
@@ -175,8 +197,9 @@ public class SheetMusic : MonoBehaviour
 
         if (CurMeasure >= lastMeasureEnd)
         {
-            State = GameState.TransitionToEnd;
+            State = GameState.Ended;
             EventBus.SongEndedEvent.Invoke();
+            ToggleBGM(true);
         }
     }
 

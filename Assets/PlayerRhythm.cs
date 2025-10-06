@@ -80,14 +80,12 @@ public class PlayerRhythm : MonoBehaviour
 
 		if (Mathf.Abs(diffSeconds) <= hitWindow)
 		{
-			Debug.Log($"Hit note at {offset:F2} (cur {curMeasure:F2})");
 			currentNoteIndex++;
 
 			currentNoteOffset.Note.Play();
 		}
 		else if (-tooEarlyWindow <= diffSeconds && diffSeconds < -hitWindow)
 		{
-			Debug.Log($"Early for note at {offset:F2} (cur {curMeasure:F2})");
 			currentNoteIndex++;
 
 			currentNoteOffset.Note.Miss();

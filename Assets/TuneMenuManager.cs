@@ -21,19 +21,30 @@ public class TuneMenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        SortTunes();
         ShowTunes();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void AddTune(GameObject gameObject)
     {
         tuneList.Add(gameObject);
-        // TODO: add sorting of tunes by type
+        SortTunes();
+        ShowTunes();
+    }
+
+    void SortTunes()
+    {
+        tuneList.Sort((a, b) => {
+            var aType = a.GetComponent<Measure>().Damage[0].Type;
+            var bType = b.GetComponent<Measure>().Damage[0].Type;
+            return aType.CompareTo(bType);
+        });
     }
 
     public void ShowTunes()
@@ -44,7 +55,7 @@ public class TuneMenuManager : MonoBehaviour
             Destroy(obj.gameObject);
         }
 
-        foreach(GameObject tune in tuneList)
+        foreach (GameObject tune in tuneList)
         {
             GameObject obj = Instantiate(iconPrefab, contentObject.transform);
             BlockSpawner spawner = obj.GetComponentInChildren<BlockSpawner>();

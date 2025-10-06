@@ -15,4 +15,6 @@ public class EventBus : MonoBehaviour
 
     public static UnityEvent<TuneType> DamageEvent = new();
     public static UnityEvent DamageFinishedEvent = new();
+
+    public static UnityEvent CustomersSpawnedEvent = new();
 }

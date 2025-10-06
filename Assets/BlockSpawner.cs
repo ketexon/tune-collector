@@ -1,16 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public class BlockSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BlockSpawner : MonoBehaviour
 {
     [SerializeField] public GameObject blockPrefab; // Prefab with DraggableBlock
     [SerializeField] Measure rendererMeasure;
+    [SerializeField] Button button;
     private Canvas canvas; // Canvas the block will be spawned in
-
-    bool hovered = false;
-
-    private InputAction clickAction;
 
     private void Start()
     {
@@ -21,33 +19,14 @@ public class BlockSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             rendererMeasure.Pattern = prefabMeasure.Pattern;
             rendererMeasure.GenerateNotes();
         }
+
+        button.onClick.AddListener(OnButtonClicked);
     }
 
-    private void OnEnable()
+    public void OnButtonClicked()
     {
-        clickAction = new InputAction(type: InputActionType.Button, binding: "<Mouse>/leftButton");
-        clickAction.performed += OnClick;
-        clickAction.Enable();
-    }
-
-    public void OnClick(InputAction.CallbackContext context)
-    {
-        if (!hovered)
-        {
-            return;
-        }
         GameObject newBlock = Instantiate(blockPrefab, canvas.transform);
         RectTransform rect = newBlock.GetComponent<RectTransform>();
-        rect.position = gameObject.GetComponent<RectTransform>().position;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        hovered = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        hovered = false;
+        rect.position = transform.position;
     }
 }

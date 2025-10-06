@@ -37,6 +37,8 @@ public class CustomerManager : MonoBehaviour
     [Header("Customers")]
     [SerializeField] List<Customer> customers;
 
+
+    public int Difficulty { get { return difficulty; } }
     [SerializeField] private int difficulty = 0;
 
     HashSet<Customer> activeCustomers = new();

@@ -19,9 +19,11 @@ if not notes:
 
 if args.file:
     asset_path = pathlib.Path(args.file)
-    if not asset_path.exists():
-        print(f"Error: File '{asset_path}' does not exist.")
-        exit(1)
+    if asset_path.exists():
+        overwrite = input("Warning: File already exists. Overwrite? [Y/N] ")
+        if overwrite.lower() != "y":
+            print("Aborting.")
+            exit(0)
 
 note_re = re.compile(r"^([A-G][#b]?\d|R):(\d+)/(\d+)$")
 pitch_re = re.compile(r"^([A-G][#b]?)(\d)$")

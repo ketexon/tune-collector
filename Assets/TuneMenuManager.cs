@@ -34,6 +34,7 @@ public class TuneMenuManager : MonoBehaviour
     public void AddTune(GameObject gameObject)
     {
         tuneList.Add(gameObject);
+        Notification.Instance.Show($"You have learned a new tune!");
         SortTunes();
         ShowTunes();
     }

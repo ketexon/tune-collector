@@ -14,4 +14,5 @@ public class EventBus : MonoBehaviour
     public static UnityEvent<Measure> MeasureFailedEvent = new();
 
     public static UnityEvent<TuneType> DamageEvent = new();
+    public static UnityEvent DamageFinishedEvent = new();
 }

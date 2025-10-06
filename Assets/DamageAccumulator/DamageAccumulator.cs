@@ -78,7 +78,7 @@ public class DamageAccumulator : MonoBehaviour
     {
         IEnumerator Impl()
         {
-            while(entries.Count > 0 || entriesInQueue > 0)
+            while (entries.Count > 0 || entriesInQueue > 0)
             {
                 if (entries.Count == 0)
                 {
@@ -102,6 +102,7 @@ public class DamageAccumulator : MonoBehaviour
                 yield return new WaitForSeconds(dealDamageInterval);
             }
             entries.Clear();
+            EventBus.DamageFinishedEvent.Invoke();
         }
         StartCoroutine(Impl());
     }

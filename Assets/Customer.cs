@@ -22,11 +22,15 @@ public class Customer : MonoBehaviour
     [SerializeField] Sprite unhappySprite;
     [SerializeField] Sprite singingSprite;
 
+    [Header("Singing")]
+    [SerializeField] Instrument singingInstrument;
+
     float transitionTime = 1f;
 
     private void Start()
     {
         EventBus.DamageEvent.AddListener(ProcessTuneDamage);
+        EventBus.DamageFinishedEvent.AddListener(ResolveGamePhase);
     }
 
     void ProcessTuneDamage(TuneType tune)
@@ -35,7 +39,7 @@ public class Customer : MonoBehaviour
         ShowRequirements();
     }
 
-    // To be called by an event 
+    // To be called by an event
     void ResolveGamePhase()
     {
         StopAllCoroutines(); // Stop any ongoing transition
@@ -124,15 +128,20 @@ public class Customer : MonoBehaviour
     {
         // Change to singing sprite, hum for a bit, then reward player and fade out
         sprite.sprite = singingSprite;
-        // TODO: Start tune playback
-        yield return new WaitForSeconds(2.5f);
+        var pattern = rewardTune.GetComponent<Measure>().Pattern;
+        var patternPlayer = gameObject.AddComponent<PatternPlayer>();
+        patternPlayer.Pattern = pattern;
+        patternPlayer.Instrument = singingInstrument;
+        patternPlayer.PlaybackFinishedEvent.AddListener(() =>
+        {
+            // Reward the player
+            TuneMenuManager.Instance.AddTune(rewardTune);
+            CustomerManager.Instance.RemoveTune(rewardTune);
 
-        // Reward the player
-        TuneMenuManager.Instance.AddTune(rewardTune);
-        CustomerManager.Instance.RemoveTune(rewardTune); 
-
-        sprite.sprite = happySprite;
-        yield return StartCoroutine(FadeOutCustomer());
+            sprite.sprite = happySprite;
+            StartCoroutine(FadeOutCustomer());
+        });
+        yield break;
     }
 
     IEnumerator FadeOutCustomer()
@@ -155,7 +164,7 @@ public class Customer : MonoBehaviour
         DestroyAndAlertSpawner();
     }
 
-    // Call this to destroy the current object 
+    // Call this to destroy the current object
     void DestroyAndAlertSpawner()
     {
         // Make sure CustomerManager.Instance exists

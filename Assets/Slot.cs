@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    Transform startParent;
-
-    const float BlockLerpSpeed = 2f;
-
     public bool IsOccupied => CurrentBlock != null;
     public DraggableBlock CurrentBlock { get; private set; }
 

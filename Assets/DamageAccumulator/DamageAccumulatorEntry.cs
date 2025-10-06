@@ -1,7 +1,9 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 
 public class DamageAccumulatorEntry : MonoBehaviour
 {
@@ -14,22 +16,56 @@ public class DamageAccumulatorEntry : MonoBehaviour
 	[System.NonSerialized]
 	public Vector2 TargetPosition;
 
-	bool lerp = false;
+	[SerializeField]
+	float swayMagnitude = 5f;
+
+	public UnityEvent ReachedTargetEvent = new();
+
+	[System.NonSerialized]
+	public TuneType Type;
+
+	bool lerp = true;
+
+	Vector2 sway = Vector2.zero;
+
+	Vector2 ActualTargetPosition => TargetPosition + sway;
+
+	float startTime = 0f;
+
+	void Start()
+	{
+		startTime = Time.time;
+		var image = GetComponentInChildren<Image>();
+		image.color = Type switch
+		{
+			TuneType.Bass => Color.red,
+			TuneType.Percussion => Color.green,
+			TuneType.Melody => Color.blue,
+			_ => Color.white,
+		};
+	}
 
 	void Update()
 	{
+		float t = Time.time - startTime;
+		sway = new Vector2(
+			math.sin(t * 3f + (int)Type * 10) * swayMagnitude,
+			math.cos(t * 4f + (int)Type * 15) * swayMagnitude
+		);
+
 		if (!lerp)
 			return;
 
 		transform.position = Vector2.Lerp(
 			transform.position,
-			TargetPosition,
+			ActualTargetPosition,
 			Time.deltaTime * 10f
 		);
 	}
 
-	void MoveToTarget()
+	public void MoveToTarget()
 	{
+		lerp = false;
 		IEnumerator Impl()
 		{
 			float startTime = Time.time;
@@ -41,10 +77,11 @@ public class DamageAccumulatorEntry : MonoBehaviour
 			{
 				float t = (Time.time - startTime) / duration;
 				t = curve.Evaluate(t);
-				transform.position = Vector2.LerpUnclamped(startPosition, TargetPosition, t);
+				transform.position = Vector2.LerpUnclamped(startPosition, ActualTargetPosition, t);
 				yield return null;
 			}
-			transform.position = TargetPosition;
+			ReachedTargetEvent.Invoke();
+			transform.position = ActualTargetPosition;
 			lerp = true;
 		}
 

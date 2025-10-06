@@ -177,7 +177,6 @@ public class SheetMusic : MonoBehaviour
         {
             State = GameState.TransitionToEnd;
             EventBus.SongEndedEvent.Invoke();
-            ClearSlots();
         }
     }
 

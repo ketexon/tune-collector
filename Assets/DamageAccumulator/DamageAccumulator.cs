@@ -9,6 +9,9 @@ public class DamageAccumulator : MonoBehaviour
     [SerializeField]
     float spacing = 24f;
 
+    [SerializeField]
+    float damageInterval = 0.4f;
+
     List<DamageAccumulatorEntry> entries = new();
 
     void Start()
@@ -18,10 +21,32 @@ public class DamageAccumulator : MonoBehaviour
 
     void OnMeasurePassed(Measure measure)
     {
-        var obj = Instantiate(entryPrefab, transform);
-        obj.transform.position = measure.transform.position;
-        entries.Add(obj);
+        List<TuneType> types = new();
+        foreach (var dmg in measure.Damage)
+        {
+            for (int i = 0; i < dmg.Damage; i++)
+            {
+                types.Add(dmg.Type);
+            }
+        }
+
+        types.Shuffle();
+        for (int i = 0; i < types.Count; i++)
+        {
+            var type = types[i];
+            this.Delay(i * damageInterval, () => AddEntry(measure.transform, type));
+        }
+    }
+
+    void AddEntry(Transform startTransform, TuneType type)
+    {
+        Debug.Log("ADDING ENTYR");
+        var entry = Instantiate(entryPrefab, transform);
+        entry.Type = type;
+        entry.transform.position = startTransform.position;
+        entries.Add(entry);
         RecalulateTargetPositions();
+        entry.MoveToTarget();
     }
 
     void RecalulateTargetPositions()

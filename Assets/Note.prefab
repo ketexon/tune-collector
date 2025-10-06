@@ -129,6 +129,13 @@ MonoBehaviour:
     Duration: 1
     Division: 4
     Pitch: 0
+    Element: {fileID: 0}
+  Measure: {fileID: 0}
+  OffsetPercent: 0
+  missColor: {r: 0.5245282, g: 0.5245282, b: 0.5245282, a: 1}
+  shakeMagnitude: 2
+  shakeDuration: 0.5
+  image: {fileID: 8163883280683690393}
 --- !u!222 &6241658357465445350
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4e47b2e0583854f8f3a56b00294da7, type: 3}
   m_Name: Melody2
   m_EditorClassIdentifier: Assembly-CSharp::Pattern
+  DefaultElement: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   Notes:
   - Duration: 1
     Division: 4

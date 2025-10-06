@@ -18,7 +18,17 @@ public class NotePlayer : MonoBehaviour
     void OnNotePlayed(MeasureNote measureNote)
     {
         var noteLengthSeconds = measureNote.NoteValue.DurationBeats / sheetMusic.BPS;
-        var instrument = measureNote.NoteValue.Element.Instrument;
+        var element = measureNote.NoteValue.Element;
+        if (element == null)
+        {
+            element = measureNote.Measure.Pattern.DefaultElement;
+        }
+        if (element == null)
+        {
+            Debug.LogError($"No element for note {measureNote.NoteValue}");
+            return;
+        }
+        var instrument = element.Instrument;
         var pitch = measureNote.NoteValue.Pitch;
         var sample = instrument.GetSample(pitch);
 

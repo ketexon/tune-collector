@@ -65,7 +65,12 @@ public class PatternPlayer : MonoBehaviour
 	void PlayNote(NoteValue noteValue)
 	{
 		var noteLengthSeconds = noteValue.DurationBeats / BPS;
-		var instrument = noteValue.Element.Instrument;
+		var element = noteValue.Element;
+		if (element == null)
+		{
+			element = Pattern.DefaultElement;
+		}
+		var instrument = element.Instrument;
 		var pitch = noteValue.Pitch;
 		var sample = instrument.GetSample(pitch);
 

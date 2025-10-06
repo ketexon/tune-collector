@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6639ef6d4161e6458dfa41e7cec7c5a, type: 3}
-  m_Name: BlueElement
+  m_Name: PercElement
   m_EditorClassIdentifier: Assembly-CSharp::Element
-  Instrument: {fileID: 11400000, guid: d071ebea0d24e1a44856d9a672b674f0, type: 2}
+  Instrument: {fileID: 11400000, guid: dc775314f31ea1946a0ec29c0a6df45d, type: 2}
+  Color: {r: 0.9607843, g: 0.8784314, b: 0.41176474, a: 1}

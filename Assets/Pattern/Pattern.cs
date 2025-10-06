@@ -30,5 +30,8 @@ public class NoteValue
 public class Pattern : ScriptableObject
 {
     [SerializeField]
+    public Element DefaultElement;
+
+    [SerializeField]
     public List<NoteValue> Notes;
 }

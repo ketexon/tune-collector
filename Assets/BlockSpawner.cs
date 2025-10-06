@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class BlockSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] public GameObject blockPrefab; // Prefab with DraggableBlock
+    [SerializeField] Measure rendererMeasure;
     private Canvas canvas; // Canvas the block will be spawned in
-
 
     bool hovered = false;
 
@@ -15,6 +15,12 @@ public class BlockSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private void Start()
     {
         canvas = FindAnyObjectByType<Canvas>();
+        var prefabMeasure = blockPrefab.GetComponent<Measure>();
+        if (rendererMeasure)
+        {
+            rendererMeasure.Pattern = prefabMeasure.Pattern;
+            rendererMeasure.GenerateNotes();
+        }
     }
 
     private void OnEnable()

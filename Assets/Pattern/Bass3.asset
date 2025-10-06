@@ -16,48 +16,48 @@ MonoBehaviour:
   - Duration: 1
     Division: 16
     Pitch: 0
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 8
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 15
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 8
     Pitch: 17
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 8
     Pitch: 18
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 0
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 8
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 15
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 8
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}
   - Duration: 1
     Division: 8
     Pitch: 10
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 8cdb2af8fb36cce4296c3263e03b2349, type: 2}

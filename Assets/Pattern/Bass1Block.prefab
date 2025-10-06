@@ -92,6 +92,22 @@ PrefabInstance:
       propertyPath: Pattern
       value: 
       objectReference: {fileID: 11400000, guid: e8a464dbf794d044ebc8e839ae16a08a, type: 2}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: TuneName
+      value: Bass 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: Damage.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: Damage.Array.data[0].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: Damage.Array.data[0].Damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1750069810907490976, guid: b19ca61681b8da544ad50f626269348e, type: 3}
       propertyPath: m_Name
       value: Bass1Block

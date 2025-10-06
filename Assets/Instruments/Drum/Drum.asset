@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83709e919d396114a87b54404e11296a, type: 3}
   m_Name: Drum
   m_EditorClassIdentifier: Assembly-CSharp::Instrument
-  PitchSamples: []
+  PitchSamples:
+  - Pitch: 13
+    Sample: {fileID: 8300000, guid: c222670e9aabc43429ed154f93906b0d, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Measure : MonoBehaviour
 {
     const float PassPercent = 0.1f;
-
+    public string TuneName;
     public Pattern Pattern;
     public List<TuneTypeDamage> Damage;
 
@@ -47,7 +47,6 @@ public class Measure : MonoBehaviour
 
         var rectTransform = transform as RectTransform;
         float currentOffsetPercent = 0f;
-        Debug.Log($"HI {Pattern.Notes.Count}");
         foreach (var noteValue in Pattern.Notes)
         {
             if (noteValue.Pitch == PitchValue.Rest)
@@ -55,7 +54,6 @@ public class Measure : MonoBehaviour
                 currentOffsetPercent += noteValue.DurationMeasures;
                 continue;
             }
-            Debug.Log(noteValue);
 
             var note = Instantiate(notePrefab, noteContainer);
             note.NoteValue = noteValue;
@@ -63,15 +61,15 @@ public class Measure : MonoBehaviour
             note.OffsetPercent = currentOffsetPercent;
             note.name = $"Note {currentOffsetPercent:F2}";
 
-            float startPos = currentOffsetPercent * rectTransform.rect.width;
+            var endAnchorX = currentOffsetPercent + noteValue.DurationMeasures;
             var noteRect = note.transform as RectTransform;
 
             noteRect.pivot = new Vector2(0, 0.5f);
-            noteRect.anchoredPosition = new Vector2(startPos, 0);
-            noteRect.anchorMin = new Vector2(0, 0.5f);
-            noteRect.anchorMax = new Vector2(0, 0.5f);
+            noteRect.anchoredPosition = new Vector2(0, 0);
+            noteRect.anchorMin = new Vector2(currentOffsetPercent, 0.5f);
+            noteRect.anchorMax = new Vector2(endAnchorX, 0.5f);
             noteRect.sizeDelta = new Vector2(
-                noteValue.DurationMeasures * rectTransform.rect.width,
+                0,
                 noteRect.sizeDelta.y
             );
 

@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: Pattern
       value: 
       objectReference: {fileID: 11400000, guid: 3703778de7aeefd4da7634483df478b2, type: 2}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: TuneName
+      value: Melody 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1750069810907490976, guid: b19ca61681b8da544ad50f626269348e, type: 3}
       propertyPath: m_Name
       value: MelodyBlock2

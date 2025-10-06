@@ -76,6 +76,7 @@ public class Customer : MonoBehaviour
             // If requirements remain, leave unhappy
             if (requirements.Count > 0)
             {
+                CustomerManager.Instance.AdjustDifficulty(false);
                 MakeUnhappy();
                 yield return wait;
                 HideRequirements();
@@ -84,6 +85,7 @@ public class Customer : MonoBehaviour
             // If no requirements remain and has reward tune, stay and hum the tune, rewarding it to the player
             else if (rewardTune != null)
             {
+                CustomerManager.Instance.AdjustDifficulty(true);
                 MakeHappy();
                 yield return wait;
                 HideRequirements();
@@ -92,6 +94,7 @@ public class Customer : MonoBehaviour
             // If no more requirements remain and no reward tune, leave happily
             else
             {
+                CustomerManager.Instance.AdjustDifficulty(true);
                 MakeHappy();
                 yield return wait;
                 HideRequirements();

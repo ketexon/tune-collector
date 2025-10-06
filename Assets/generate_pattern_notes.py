@@ -16,6 +16,12 @@ if not notes:
     parser.print_help()
     exit(1)
 
+notes2 = []
+
+for note in notes:
+    notes2.extend(note.split())
+
+notes = notes2
 
 if args.file:
     asset_path = pathlib.Path(args.file)

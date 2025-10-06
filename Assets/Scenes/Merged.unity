@@ -856,6 +856,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
+      propertyPath: tuneList.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
+      propertyPath: 'tuneList.Array.data[8]'
+      value: 
+      objectReference: {fileID: 4832223752835922923, guid: bc1bb7ab8493a9b41902ba3557200d0b, type: 3}
+    - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
+      propertyPath: 'tuneList.Array.data[9]'
+      value: 
+      objectReference: {fileID: 4578199758824057979, guid: f32563a5ecee5574cb5cd9cf7ee35a60, type: 3}
+    - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
+      propertyPath: 'tuneList.Array.data[10]'
+      value: 
+      objectReference: {fileID: 7098720610518750160, guid: 5b220a87c3578d9418281c7b142a7b2f, type: 3}
+    - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
+      propertyPath: 'tuneList.Array.data[11]'
+      value: 
+      objectReference: {fileID: 864847355011072341, guid: ec5de64df96626f4ab01c8cfc7b8afbc, type: 3}
+    - target: {fileID: 8375082378034014249, guid: 99610efc3cb9e744893dda23db041101, type: 3}
+      propertyPath: 'tuneList.Array.data[12]'
+      value: 
+      objectReference: {fileID: 338992719289068811, guid: e3695b69439dd0b4a8e20089599eff6d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

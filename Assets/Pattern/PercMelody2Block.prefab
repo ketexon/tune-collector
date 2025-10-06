@@ -92,6 +92,22 @@ PrefabInstance:
       propertyPath: Pattern
       value: 
       objectReference: {fileID: 11400000, guid: 4a2128e390abb5043828811f3d57beda, type: 2}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: Damage.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: Damage.Array.data[0].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: Damage.Array.data[0].Damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580445836356203081, guid: b19ca61681b8da544ad50f626269348e, type: 3}
+      propertyPath: Damage.Array.data[1].Damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1750069810907490976, guid: b19ca61681b8da544ad50f626269348e, type: 3}
       propertyPath: m_Name
       value: PercMelody2Block

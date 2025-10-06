@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4e47b2e0583854f8f3a56b00294da7, type: 3}
   m_Name: PercMelody1
   m_EditorClassIdentifier: Assembly-CSharp::Pattern
+  DefaultElement: {fileID: 0}
   Notes:
   - Duration: 1
     Division: 16
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 894e9e1ab8ec1064597e6037cccacfb1, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 894e9e1ab8ec1064597e6037cccacfb1, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -28,7 +29,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 20
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -36,7 +37,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 18
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -44,7 +45,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 17
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -52,7 +53,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 15
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -60,7 +61,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 17
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 0
@@ -68,11 +69,11 @@ MonoBehaviour:
   - Duration: 1
     Division: 16
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 894e9e1ab8ec1064597e6037cccacfb1, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 894e9e1ab8ec1064597e6037cccacfb1, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -80,7 +81,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 18
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -88,7 +89,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 17
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -96,7 +97,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 13
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 10
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 32
     Pitch: 0
@@ -112,7 +113,7 @@ MonoBehaviour:
   - Duration: 1
     Division: 32
     Pitch: 8
-    Element: {fileID: 0}
+    Element: {fileID: 11400000, guid: 65219cc059a8c384f98fe6ad51ab7990, type: 2}
   - Duration: 1
     Division: 16
     Pitch: 0

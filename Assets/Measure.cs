@@ -9,13 +9,11 @@ public class Measure : MonoBehaviour
     public Pattern Pattern;
     public List<TuneTypeDamage> Damage;
 
-    [SerializeField] MeasureNote notePrefab;
-
-    [SerializeField]
-    private Transform noteContainer;
-
     [System.NonSerialized]
     public List<MeasureNote> MeasureNotes = new();
+
+    [SerializeField] MeasureNote notePrefab;
+	[SerializeField] private Transform noteContainer;
 
     int notesHit = 0;
     int notesMissed = 0;
@@ -40,8 +38,9 @@ public class Measure : MonoBehaviour
         while (noteContainer.childCount > 0)
         {
             DestroyImmediate(
-                noteContainer.GetChild(noteContainer.childCount - 1)
-                .gameObject
+                noteContainer
+					.GetChild(noteContainer.childCount - 1)
+                	.gameObject
             );
         }
         MeasureNotes.Clear();

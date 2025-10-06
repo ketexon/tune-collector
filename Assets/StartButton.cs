@@ -4,8 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
-    public void LoadMainScene()
+    AsyncOperation asyncLoad;
+
+    void Start()
     {
-        SceneManager.LoadScene("Merged");
+        asyncLoad = SceneManager.LoadSceneAsync("Merged");
+        asyncLoad.allowSceneActivation = false;
+	}
+
+	public void LoadMainScene()
+    {
+        asyncLoad.allowSceneActivation = true;
     }
 }

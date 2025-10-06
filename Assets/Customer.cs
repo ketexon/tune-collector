@@ -128,7 +128,8 @@ public class Customer : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
 
         // Reward the player
-        Instantiate(rewardTune, transform.position + Vector3.up * 1.5f, Quaternion.identity);
+        TuneMenuManager.Instance.AddTune(rewardTune);
+        CustomerManager.Instance.RemoveTune(rewardTune); 
 
         sprite.sprite = happySprite;
         yield return StartCoroutine(FadeOutCustomer());

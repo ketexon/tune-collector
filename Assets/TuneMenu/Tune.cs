@@ -6,10 +6,8 @@ public class Tune : MonoBehaviour
 	[SerializeField] Transform damageCountEntryContainer;
 	[SerializeField] BlockSpawner blockSpawner;
 	[SerializeField] TMPro.TMP_Text tuneNameText;
-	[SerializeField] GameObject damageCountEntryPrefab;
-	[SerializeField] Color melodyColor = Color.cyan;
-	[SerializeField] Color bassColor = Color.yellow;
-	[SerializeField] Color percussionColor = Color.red;
+	[SerializeField] DamageCountEntry damageCountEntryPrefab;
+	[SerializeField] Theme theme;
 
 	void Start()
 	{
@@ -24,16 +22,8 @@ public class Tune : MonoBehaviour
 		foreach (var dmg in measure.Damage)
 		{
 			var damageCountEntry = Instantiate(damageCountEntryPrefab, damageCountEntryContainer);
-			var text = damageCountEntry.GetComponentInChildren<TMPro.TMP_Text>();
-			var image = damageCountEntry.GetComponentInChildren<Image>();
-			text.text = $"{dmg.Damage}";
-			image.color = dmg.Type switch
-			{
-				TuneType.Melody => melodyColor,
-				TuneType.Bass => bassColor,
-				TuneType.Percussion => percussionColor,
-				_ => Color.white
-			};
+			damageCountEntry.Damage = dmg.Damage;
+			damageCountEntry.Type = dmg.Type;
 		}
 	}
 }

@@ -630,10 +630,8 @@ MonoBehaviour:
   damageCountEntryContainer: {fileID: 2699948596109429922}
   blockSpawner: {fileID: 6831701380005778583}
   tuneNameText: {fileID: 597265888262382729}
-  damageCountEntryPrefab: {fileID: 8830427893078109864, guid: bcd8aa76861009c45b17f8464febdc81, type: 3}
-  melodyColor: {r: 0.41176474, g: 0.5019608, b: 0.9607844, a: 1}
-  bassColor: {r: 0.9607843, g: 0.41176474, b: 0.41176474, a: 1}
-  percussionColor: {r: 0.9607843, g: 0.8784314, b: 0.41176474, a: 1}
+  damageCountEntryPrefab: {fileID: 2074251056274732392, guid: bcd8aa76861009c45b17f8464febdc81, type: 3}
+  theme: {fileID: 11400000, guid: 33fc4367926f62a48a2a0af7c39ef9a1, type: 2}
 --- !u!1 &7995658919109284014
 GameObject:
   m_ObjectHideFlags: 0

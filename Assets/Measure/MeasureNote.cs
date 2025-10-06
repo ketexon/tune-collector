@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class MeasureNote : MonoBehaviour
 {
+	[SerializeField]
+	Theme theme;
+
 	public NoteValue NoteValue;
 	public Measure Measure;
 	public float OffsetPercent;
@@ -29,7 +32,7 @@ public class MeasureNote : MonoBehaviour
 			element = Measure.Pattern.DefaultElement;
 		}
 
-		Color color = element.Color;
+		Color color = theme.GetColor(element.TuneType);
 		color.a = 0.5f;
 		image.color = color;
 	}

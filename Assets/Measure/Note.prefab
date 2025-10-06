@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e2bfba412ab664aa5778d1f57f1e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeasureNote
+  theme: {fileID: 11400000, guid: 33fc4367926f62a48a2a0af7c39ef9a1, type: 2}
   NoteValue:
     Duration: 1
     Division: 4
@@ -134,6 +135,7 @@ MonoBehaviour:
   OffsetPercent: 0
   missColor: {r: 0.5245282, g: 0.5245282, b: 0.5245282, a: 1}
   shakeMagnitude: 2
+  shakeRotateMagnitude: 5
   shakeDuration: 0.5
   image: {fileID: 8163883280683690393}
 --- !u!222 &6241658357465445350

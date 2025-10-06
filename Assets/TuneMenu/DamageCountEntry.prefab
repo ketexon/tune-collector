@@ -146,10 +146,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6828440905393684167}
   - component: {fileID: 4885069101236078856}
-  - component: {fileID: 633562494212729278}
   - component: {fileID: 3600867128423839361}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: IconContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,36 +181,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7052631072165967436}
   m_CullTransparentMesh: 1
---- !u!114 &633562494212729278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7052631072165967436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &3600867128423839361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +212,7 @@ GameObject:
   - component: {fileID: 7128042579465534746}
   - component: {fileID: 6347612381603765962}
   - component: {fileID: 894810876002739098}
+  - component: {fileID: 2074251056274732392}
   m_Layer: 5
   m_Name: DamageCountEntry
   m_TagString: Untagged
@@ -269,7 +239,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 15.35, y: -6}
-  m_SizeDelta: {x: 22.7, y: 12}
+  m_SizeDelta: {x: 0, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6347612381603765962
 MonoBehaviour:
@@ -311,3 +281,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &2074251056274732392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8830427893078109864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394dbe07398802845ae2a6ab0383515d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageCountEntry
+  Type: 0
+  Damage: 0
+  text: {fileID: 3345104880760256941}
+  iconContainer: {fileID: 6828440905393684167}
+  melodyIconPrefab: {fileID: 255612055494328669, guid: 0c7a36df20f516c4aa458075ca403968, type: 3}
+  bassIconPrefab: {fileID: 3503857973000000163, guid: f2875dbe79a061f4193f7bc1b6cf0d70, type: 3}
+  percussionIconPrefab: {fileID: 7711664507447732004, guid: b68f0c753eea43240a4c71bba48782bc, type: 3}

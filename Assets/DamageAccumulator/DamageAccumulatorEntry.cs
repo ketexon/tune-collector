@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class DamageAccumulatorEntry : MonoBehaviour
 {
 	[SerializeField]
+	Theme theme;
+
+	[SerializeField]
 	AnimationCurve curve;
 
 	[SerializeField]
@@ -36,13 +39,7 @@ public class DamageAccumulatorEntry : MonoBehaviour
 	{
 		startTime = Time.time;
 		var image = GetComponentInChildren<Image>();
-		image.color = Type switch
-		{
-			TuneType.Bass => Color.red,
-			TuneType.Percussion => Color.green,
-			TuneType.Melody => Color.blue,
-			_ => Color.white,
-		};
+		image.color = theme.GetColor(Type);
 	}
 
 	void Update()

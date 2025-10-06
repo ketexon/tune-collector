@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9dd84b1e8078142a06362996d7401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageAccumulatorEntry
+  theme: {fileID: 11400000, guid: 33fc4367926f62a48a2a0af7c39ef9a1, type: 2}
   curve:
     serializedVersion: 2
     m_Curve:
@@ -74,6 +75,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   duration: 0.5
+  swayMagnitude: 5
+  ReachedTargetEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2787263734274903448
 GameObject:
   m_ObjectHideFlags: 0

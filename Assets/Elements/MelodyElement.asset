@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6639ef6d4161e6458dfa41e7cec7c5a, type: 3}
   m_Name: MelodyElement
   m_EditorClassIdentifier: Assembly-CSharp::Element
+  TuneType: 2
   Instrument: {fileID: 11400000, guid: d071ebea0d24e1a44856d9a672b674f0, type: 2}
-  Color: {r: 0.41176474, g: 0.5019608, b: 0.9607844, a: 1}

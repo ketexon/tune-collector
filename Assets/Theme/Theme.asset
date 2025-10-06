@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58ada4a71ad33d4686f2821ce1c003f, type: 3}
+  m_Name: Theme
+  m_EditorClassIdentifier: Assembly-CSharp::Theme
+  MelodyColor: {r: 0.3372549, g: 0.79607844, b: 1, a: 1}
+  PercussionColor: {r: 0.9764706, g: 0.9254902, b: 0, a: 1}
+  BassColor: {r: 0.8, g: 0, b: 1, a: 1}

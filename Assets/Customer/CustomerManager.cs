@@ -33,23 +33,16 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] List<GameObject> tuneList;
 
 
-    [Header("Customer Settings")]
-    [SerializeField] private GameObject customerPrefab;
 
-    [Header("Spawn Anchors")]
-    [SerializeField] private Transform customer1Anchor;
-    [SerializeField] private Transform customer2Anchor;
-    [SerializeField] private Transform customer3Anchor;
+    [Header("Customers")]
+    [SerializeField] List<Customer> customers;
 
     [SerializeField] private int difficulty = 0;
 
-    private Transform[] anchors;
-
-    HashSet<Customer> activeCustomers = new HashSet<Customer>();
+    HashSet<Customer> activeCustomers = new();
 
     private void Awake()
     {
-        anchors = new Transform[] { customer1Anchor, customer2Anchor, customer3Anchor };
         Instance = this;
     }
 
@@ -122,16 +115,6 @@ public class CustomerManager : MonoBehaviour
     /// </summary>
     public void SpawnCustomers(bool includeMelody, int numCustomers, int requirementCap)
     {
-        // Clear any existing customers first (optional)
-        foreach (Transform anchor in anchors)
-        {
-            if (anchor.childCount > 0)
-            {
-                for (int i = anchor.childCount - 1; i >= 0; i--)
-                    Destroy(anchor.GetChild(i).gameObject);
-            }
-        }
-
         // Determine possible tune types
         var availableTypes = new List<TuneType> { TuneType.Percussion, TuneType.Bass };
         if (includeMelody)
@@ -146,29 +129,30 @@ public class CustomerManager : MonoBehaviour
         int rewardIndex = Random.Range(0, numCustomers);
 
         // Spawn
-        for (int i = 0; i < numCustomers && i < anchors.Length; i++)
+        for (int i = 0; i < numCustomers; i++)
         {
-            GameObject customerObj = Instantiate(customerPrefab, anchors[i].position, anchors[i].rotation, anchors[i]);
-            Customer customer = customerObj.GetComponent<Customer>();
+            var customer = customers[i];
+            customer.gameObject.SetActive(true);
 
-            if (customer != null)
+            customer.requirements.Clear();
+            int numRequirements = Random.Range(1, requirementCap + 1);
+
+            for (int r = 0; r < numRequirements; r++)
             {
-                customer.requirements.Clear();
-                int numRequirements = Random.Range(1, requirementCap + 1);
-
-                for (int r = 0; r < numRequirements; r++)
-                {
-                    TuneType randomType = availableTypes[Random.Range(0, availableTypes.Count)];
-                    customer.requirements.Add(randomType);
-                }
-                if (i == rewardIndex && rewardTune != null)
-                {
-                    Debug.Log("ASSIGN REWARD TUNE");
-                    customer.rewardTune = rewardTune;
-                }
-                activeCustomers.Add(customer);
-                customer.ShowCustomer();
+                TuneType randomType = availableTypes[Random.Range(0, availableTypes.Count)];
+                customer.requirements.Add(randomType);
             }
+            if (i == rewardIndex && rewardTune != null)
+            {
+                Debug.Log("ASSIGN REWARD TUNE");
+                customer.rewardTune = rewardTune;
+            }
+            activeCustomers.Add(customer);
+            customer.ShowCustomer();
+        }
+        for (int i = numCustomers; i < customers.Count; i++)
+        {
+            customers[i].gameObject.SetActive(false);
         }
 
         EventBus.CustomersSpawnedEvent.Invoke();

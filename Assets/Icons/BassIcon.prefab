@@ -13,17 +13,9 @@ PrefabInstance:
       value: BassIcon
       objectReference: {fileID: 0}
     - target: {fileID: 4339075578588107008, guid: 0c7a36df20f516c4aa458075ca403968, type: 3}
-      propertyPath: m_Color.b
-      value: 0.41176474
-      objectReference: {fileID: 0}
-    - target: {fileID: 4339075578588107008, guid: 0c7a36df20f516c4aa458075ca403968, type: 3}
-      propertyPath: m_Color.g
-      value: 0.41176474
-      objectReference: {fileID: 0}
-    - target: {fileID: 4339075578588107008, guid: 0c7a36df20f516c4aa458075ca403968, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9607843
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8853908768927735125, guid: 70fc6c13f831e455caf31a4d09c76c5c, type: 3}
     - target: {fileID: 6857788894453641672, guid: 0c7a36df20f516c4aa458075ca403968, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

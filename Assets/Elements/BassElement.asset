@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6639ef6d4161e6458dfa41e7cec7c5a, type: 3}
   m_Name: BassElement
   m_EditorClassIdentifier: Assembly-CSharp::Element
+  TuneType: 1
   Instrument: {fileID: 11400000, guid: 3f732621ffcd9f449b670a1866690fa5, type: 2}
-  Color: {r: 0.9607843, g: 0.41176474, b: 0.41176474, a: 1}

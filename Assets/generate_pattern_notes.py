@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: {asset_path.stem}
   m_EditorClassIdentifier: Assembly-CSharp::Pattern
   Notes:
+  DefaultElement: {{fileID: 0}}
 {yaml_notes_out}
 """
 

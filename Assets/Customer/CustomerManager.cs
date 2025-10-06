@@ -139,7 +139,8 @@ public class CustomerManager : MonoBehaviour
 
             for (int r = 0; r < numRequirements; r++)
             {
-                TuneType randomType = availableTypes[Random.Range(0, availableTypes.Count)];
+                var idx = Random.Range(0, availableTypes.Count);
+                TuneType randomType = availableTypes[idx];
                 customer.requirements.Add(randomType);
             }
             if (i == rewardIndex && rewardTune != null)

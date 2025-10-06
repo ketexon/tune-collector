@@ -8,7 +8,13 @@ using UnityEngine.UI;
 public class DamageAccumulatorEntry : MonoBehaviour
 {
 	[SerializeField]
-	Theme theme;
+	GameObject percussionIcon;
+
+	[SerializeField]
+	GameObject bassIcon;
+
+	[SerializeField]
+	GameObject melodyIcon;
 
 	[SerializeField]
 	AnimationCurve curve;
@@ -38,8 +44,23 @@ public class DamageAccumulatorEntry : MonoBehaviour
 	void Start()
 	{
 		startTime = Time.time;
-		var image = GetComponentInChildren<Image>();
-		image.color = theme.GetColor(Type);
+
+		var iconPrefab = Type switch
+		{
+			TuneType.Melody => melodyIcon,
+			TuneType.Bass => bassIcon,
+			TuneType.Percussion => percussionIcon,
+			_ => null,
+		};
+
+		Debug.Assert(iconPrefab != null, "Invalid TuneType for damage accumulator entry");
+
+		var icon = Instantiate(iconPrefab, transform);
+		var iconRect = icon.GetComponent<RectTransform>();
+		iconRect.anchorMin = Vector2.zero;
+		iconRect.anchorMax = Vector2.one;
+		iconRect.anchoredPosition = Vector2.zero;
+		iconRect.sizeDelta = Vector2.zero;
 	}
 
 	void Update()

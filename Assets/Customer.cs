@@ -6,15 +6,21 @@ using System.Collections.Generic;
 public class Customer : MonoBehaviour
 {
     public List<TuneType> requirements = new List<TuneType>();
-
     public GameObject rewardTune;
 
+    [Header("UI References")]
     [SerializeField] Transform requirementUI;
     [SerializeField] Image sprite;
 
+    [Header("Icons")]
     [SerializeField] GameObject melodyIcon;
     [SerializeField] GameObject bassIcon;
     [SerializeField] GameObject percussionIcon;
+
+    [Header("Sprites / Expressions")]
+    [SerializeField] Sprite happySprite;
+    [SerializeField] Sprite unhappySprite;
+    [SerializeField] Sprite singingSprite;
 
     float transitionTime = 1f;
 
@@ -32,20 +38,24 @@ public class Customer : MonoBehaviour
     // To be called by an event 
     void ResolveGamePhase()
     {
+        StopAllCoroutines(); // Stop any ongoing transition
+
         // If requirements remain, leave unhappy
         if (requirements.Count > 0)
         {
-            // Change sprite to unhappy sprite, fade the character to black and lower the opacity until they vanish
+            sprite.sprite = unhappySprite;
+            StartCoroutine(FadeOutCustomer());
         }
         // If no requirements remain and has reward tune, stay and hum the tune, rewarding it to the player
         else if (rewardTune != null)
         {
-            // Change sprite to singing sprite, wait a number of seconds, change to happy sprite and fade the character out
+            StartCoroutine(SingingSequence());
         }
         // If no more requirements remain and no reward tune, leave happily
         else
         {
-            // Change sprite to happy sprite, fade the character out
+            sprite.sprite = happySprite;
+            StartCoroutine(FadeOutCustomer());
         }
     }
 
@@ -74,7 +84,8 @@ public class Customer : MonoBehaviour
                     break;
             }
 
-            GameObject obj = Instantiate(iconPrefab, requirementUI);
+            if (iconPrefab != null)
+                Instantiate(iconPrefab, requirementUI);
         }
     }
 
@@ -85,24 +96,71 @@ public class Customer : MonoBehaviour
 
     IEnumerator TransitionInCustomer()
     {
-        // Transition the customer in (fade + maybe bobbing)
         float curTime = 0;
+        Color col = sprite.color;
+        col.a = 0;
+        sprite.color = col;
+
+        // Fade in
         while (curTime < transitionTime)
         {
             float t = curTime / transitionTime;
-            Color col = new Color(sprite.color.r, sprite.color.g, sprite.color.b, t);
+            col.a = t;
             sprite.color = col;
             curTime += Time.deltaTime;
             yield return null;
         }
-        // Show requirements
+
+        col.a = 1f;
+        sprite.color = col;
+
+        // Show requirements after appearing
         ShowRequirements();
+    }
+
+    // --- Transition Coroutines ---
+
+    IEnumerator SingingSequence()
+    {
+        // Change to singing sprite, hum for a bit, then reward player and fade out
+        sprite.sprite = singingSprite;
+        // TODO: Start tune playback
+        yield return new WaitForSeconds(2.5f);
+
+        // Reward the player
+        Instantiate(rewardTune, transform.position + Vector3.up * 1.5f, Quaternion.identity);
+
+        sprite.sprite = happySprite;
+        yield return StartCoroutine(FadeOutCustomer());
+    }
+
+    IEnumerator FadeOutCustomer()
+    {
+        float curTime = 0;
+        Color start = sprite.color;
+        Color end = Color.black;
+        end.a = 0f;
+
+        while (curTime < transitionTime)
+        {
+            float t = curTime / transitionTime;
+            sprite.color = Color.Lerp(start, end, t);
+            curTime += Time.deltaTime;
+            yield return null;
+        }
+
+        sprite.color = end;
+
+        DestroyAndAlertSpawner();
     }
 
     // Call this to destroy the current object 
     void DestroyAndAlertSpawner()
     {
-        CustomerManager.Instance.DeactivateCustomer(this);
+        // Make sure CustomerManager.Instance exists
+        if (CustomerManager.Instance != null)
+            CustomerManager.Instance.DeactivateCustomer(this);
+
         Destroy(gameObject);
     }
 }

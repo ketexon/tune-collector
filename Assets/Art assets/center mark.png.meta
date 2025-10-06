@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8058b544f38a24a30960362a7c5d30f0
+guid: fc55534ca0125ae428dd0d606f6e44ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1455083067667093107
-    second: music_bar_base_0
+      213: 8381363096983567719
+    second: center mark_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: music_bar_base_0
+      name: center mark_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 0
-        width: 1846
-        height: 151
+        width: 40
+        height: 209
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 12, y: 12, z: 12, w: 12}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3769bf6375e713410800000000000000
-      internalID: 1455083067667093107
+      spriteID: 76df5419455905470800000000000000
+      internalID: 8381363096983567719
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4b9fd9c92458c0b4f900d788830d67d9
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      music_bar_base_0: 1455083067667093107
+      center mark_0: 8381363096983567719
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

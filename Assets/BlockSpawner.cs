@@ -44,13 +44,4 @@ public class BlockSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         hovered = false;
     }
-
-    bool rectOverlaps(RectTransform rectTrans1, RectTransform rectTrans2)
-    {
-        Rect rect1 = new Rect(rectTrans1.position.x, rectTrans1.position.y, rectTrans1.rect.width, rectTrans1.rect.height); ;
-        Debug.Log(rect1);
-        Rect rect2 = new Rect(rectTrans2.position.x, rectTrans2.position.y, rectTrans2.rect.width, rectTrans2.rect.height);
-        Debug.Log(rect2);
-        return rect1.Overlaps(rect2);
-    }
 }
